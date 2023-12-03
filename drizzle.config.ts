@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     connectionString: env.DATABASE_URL,
   },
-  tablesFilter: ["gtasa_100_checklist_*"],
+  tablesFilter: ["gtasa-100-checklist-*"],
 } satisfies Config;

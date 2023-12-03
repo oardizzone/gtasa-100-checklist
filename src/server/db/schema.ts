@@ -16,7 +16,9 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `gtasa_100_checklist_${name}`);
+export const mysqlTable = mysqlTableCreator(
+  (name) => `gtasa-100-checklist-${name}`,
+);
 
 export const posts = mysqlTable(
   "post",
@@ -30,5 +32,13 @@ export const posts = mysqlTable(
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
 );
+
+export const saves = mysqlTable("save", {
+  id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
+  createdAt: timestamp("created_at")
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: timestamp("updated_at").onUpdateNow(),
+});

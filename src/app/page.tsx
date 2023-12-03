@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 import { CreatePost } from "~/app/_components/create-post";
@@ -42,6 +43,7 @@ export default async function Home() {
           </p>
         </div>
 
+        <UserButton afterSignOutUrl="/" />
         <CrudShowcase />
       </div>
     </main>
